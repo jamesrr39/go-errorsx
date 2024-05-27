@@ -1,16 +1,10 @@
 package errorsx
 
 import (
-	"errors"
 	"fmt"
 	"runtime/debug"
 	"sort"
 	"strings"
-)
-
-// some common error objects to wrap
-var (
-	ObjectNotFound = errors.New("ObjectNotFound")
 )
 
 type kvPairsMapType map[interface{}]interface{}
@@ -50,7 +44,7 @@ func ErrWithStack(err Error) error {
 	if err == nil {
 		return nil
 	}
-	return fmt.Errorf("Error: %s\nStack:\n%s\n", err.Error(), err.Stack())
+	return fmt.Errorf("Error: %s\nStack:\n%s", err.Error(), err.Stack())
 }
 
 // GoString implements the GoStringer interface,
